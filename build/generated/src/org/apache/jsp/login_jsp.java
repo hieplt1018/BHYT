@@ -64,16 +64,17 @@ public final class login_jsp extends org.apache.jasper.runtime.HttpJspBase
       out.write("        <link href=\"css/sb-admin.css\" rel=\"stylesheet\">\n");
       out.write("\n");
       out.write("    </head>\n");
-      out.write("    <body>\n");
+      out.write("    <body class=\"bg-dark\"> \n");
       out.write("        ");
  
             Object error = request.getAttribute("errorMessage");
         
       out.write("\n");
-      out.write("        <div class=\"bg-dark section\" style=\"margin: 10% 0\">\n");
+      out.write("        <div class=\"section\" style=\"margin: 10% 0\">\n");
       out.write("            <div class=\"container\">\n");
-      out.write("                <div class=\"col-md-6\">\n");
-      out.write("                    <div class=\"row\">\n");
+      out.write("                <div class=\"card card-login mx-auto mt-5\">\n");
+      out.write("                    <div class=\"card-header\">Login</div>\n");
+      out.write("                    <div class=\"card-body\">\n");
       out.write("                        <form action=\"");
       out.write((java.lang.String) org.apache.jasper.runtime.PageContextImpl.evaluateExpression("${pageContext.request.contextPath}", java.lang.String.class, (PageContext)_jspx_page_context, null));
       out.write("/LoginServlet\"  method=\"post\">\n");
