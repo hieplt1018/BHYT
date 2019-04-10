@@ -5,7 +5,9 @@
  */
 package servlet;
 
+import com.google.gson.Gson;
 import controller.AdminDaoImpl;
+import controller.BhytDAOImpl;
 import helper.MD5;
 import java.io.IOException;
 import java.io.PrintWriter;
@@ -27,17 +29,20 @@ public class LoginServlet extends HttpServlet {
     protected void doGet(HttpServletRequest request, HttpServletResponse response)
             throws ServletException, IOException {
         request.setCharacterEncoding("UTF-8");
-        response.setContentType("text/html; charset=UTF-8");
+//        response.setContentType("text/html; charset=UTF-8");
+        response.setContentType("application/json");
         String username = request.getParameter("username");
         String password = request.getParameter("password");
         String url = "";
         HttpSession session = request.getSession();
         try {
             AdminDaoImpl adminDAO = new AdminDaoImpl();
+            BhytDAOImpl bhytDao = new BhytDAOImpl();
             System.out.println(password);
             Admin account = adminDAO.login(username, MD5.encryption(password));
             System.out.println(account);
             if (account != null) {
+                // Chuyen trang
                 url = "index.jsp";
                 session.setAttribute("account", account);
                 RequestDispatcher dispatcher = request.getRequestDispatcher(url);

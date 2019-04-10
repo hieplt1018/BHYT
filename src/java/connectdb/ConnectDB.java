@@ -40,7 +40,7 @@ public class ConnectDB {
         try {
             if (conn == null) {
                 hasDriver();
-                String url = "jdbc:mysql://localhost:3306/BHYT";
+                String url = "jdbc:mysql://localhost:3306/BHYT" + "?useUnicode=true&characterEncoding=utf-8&useSSL=false";
                 conn = DriverManager.getConnection(url, "root", "123123");
                 System.out.println("Connected successful1");
             }

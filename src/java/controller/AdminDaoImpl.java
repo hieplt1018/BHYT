@@ -28,7 +28,7 @@ public class AdminDaoImpl implements AdminDao{
     
     @Override
     public boolean register(Admin admin) {
-        String sql = "INSERT INTO Admin (Username, Password)  VALUES(?,?)";
+        String sql = "INSERT INTO admin (Username, Password)  VALUES(?,?)";
         try {
             stmt = connectdb.openConnect().prepareStatement(sql);
             stmt.setString(1, admin.getUsername());
@@ -46,7 +46,7 @@ public class AdminDaoImpl implements AdminDao{
 
     @Override
     public Admin login(String username, String password) {
-        String sql = "select * from Admin where Username='" + username + "' and password='" + password + "'";
+        String sql = "select * from admin where Username='" + username + "' and password='" + password + "'";
         System.out.println(sql);
         try {
             rs = connectdb.getStatement().executeQuery(sql);
@@ -69,8 +69,8 @@ public class AdminDaoImpl implements AdminDao{
     
     public static void main(String[] args) {
         AdminDaoImpl adminDaoImpl= new AdminDaoImpl();
-//        Admin admin = new Admin("hongduyen", "ate1202");
-//        adminDaoImpl.register(admin);
+        Admin admin = new Admin("hongduyen", "ate1202");
+        adminDaoImpl.register(admin);
         
         
     }

@@ -3,12 +3,8 @@
     <editor-bookmarks xmlns="http://www.netbeans.org/ns/editor-bookmarks/2" lastBookmarkId="0"/>
     <open-files xmlns="http://www.netbeans.org/ns/projectui-open-files/2">
         <group>
-            <file>file:/home/asus/BHYT/web/footer.jsp</file>
-            <file>file:/home/asus/BHYT/web/js/demo/chart-bar-demo.js</file>
-            <file>file:/home/asus/BHYT/web/vendor/datatables/dataTables.bootstrap4.js</file>
-            <file>file:/home/asus/BHYT/web/js/demo/chart-pie-demo.js</file>
-            <file>file:/home/asus/BHYT/web/contentIndex.jsp</file>
-            <file>file:/home/asus/BHYT/web/js/demo/chart-area-demo.js</file>
+            <file>file:/home/asus/BHYT/web/footerCharts.jsp</file>
+            <file>file:/home/asus/BHYT/src/java/controller/BhytDAOImpl.java</file>
         </group>
     </open-files>
 </project-private>
