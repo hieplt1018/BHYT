@@ -147,17 +147,17 @@ public class Config {
             this.phanTramHoGDBaNguoiPhuThuoc = dis.readDouble();
             this.phanTramHoGDBonNguoiPhuThuoc = dis.readDouble();
             this.phanTramHoGDNamVaLonHonNguoiPhuThuoc = dis.readDouble();
-//            System.out.println("Ket qua doc file cau hinh:");
-//            System.out.println(luongCoSo);
-//            System.out.println(phanTramLuong);
-//            System.out.println(phanTramHoTroHSSV);
-//            System.out.println(phanTramHoTroNongLamNgu);
-//            System.out.println(phanTramHoTroCanNgheo);
-//            System.out.println(phanTramHoGDMotNguoiPhuThuoc);
-//            System.out.println(phanTramHoGDHaiNguoiPhuThuoc);
-//            System.out.println(phanTramHoGDBaNguoiPhuThuoc);
-//            System.out.println(phanTramHoGDBonNguoiPhuThuoc);
-//            System.out.println(phanTramHoGDNamVaLonHonNguoiPhuThuoc);
+            System.out.println("Ket qua doc file cau hinh:");
+            System.out.println(luongCoSo);
+            System.out.println(phanTramLuong);
+            System.out.println(phanTramHoTroHSSV);
+            System.out.println(phanTramHoTroNongLamNgu);
+            System.out.println(phanTramHoTroCanNgheo);
+            System.out.println(phanTramHoGDMotNguoiPhuThuoc);
+            System.out.println(phanTramHoGDHaiNguoiPhuThuoc);
+            System.out.println(phanTramHoGDBaNguoiPhuThuoc);
+            System.out.println(phanTramHoGDBonNguoiPhuThuoc);
+            System.out.println(phanTramHoGDNamVaLonHonNguoiPhuThuoc);
         } catch (FileNotFoundException ex) {
             Logger.getLogger(Config.class.getName()).log(Level.SEVERE, null, ex);
         } catch (IOException ex) {
@@ -194,7 +194,8 @@ public class Config {
 
     public static void main(String[] args) {
         Config config = new Config();
-        config.ghiFile(1390000, 4.5, 30, 50, 70, 4.5, 70, 60, 50, 40);
+//        config.ghiFile(1390000, 4.5, 30, 50, 70, 4.5, 70, 60, 50, 40);
+//        config.ghiFile(10, 1, 2, 3, 2, 2, 10, 2, 3, 2);
         config.docFile();
     }
 }
