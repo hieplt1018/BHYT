@@ -8,24 +8,47 @@
 <%@page contentType="text/html" pageEncoding="UTF-8"%>
 <% 
     BhytDAOImpl bhytDao = new BhytDAOImpl();
-    int soLuongNguoiBac = bhytDao.getSoLuongTheoMien("Bắc");
-    int soLuongNguoiTrung = bhytDao.getSoLuongTheoMien("Trung");
-    int soLuongNguoiNam = bhytDao.getSoLuongTheoMien("Nam");
-    int soLuongNguoiVungDBB = bhytDao.getSoLuongTheoVung("Đông Bắc Bộ");
-    int soLuongNguoiVungTBB = bhytDao.getSoLuongTheoVung("Tây Bắc Bộ");
-    int soLuongNguoiVungDBSH = bhytDao.getSoLuongTheoVung("Đồng bằng sông Hồng");
-    int soLuongNguoiVungBTB = bhytDao.getSoLuongTheoVung("Bắc Trung Bộ");
-    int soLuongNguoiVungNTB = bhytDao.getSoLuongTheoVung("Nam Trung Bộ");
-    int soLuongNguoiVungTN = bhytDao.getSoLuongTheoVung("Tây Nguyên");
-    int soLuongNguoiVungDNB = bhytDao.getSoLuongTheoVung("Đông Nam Bộ");
-    int soLuongNguoiVungDBSCL = bhytDao.getSoLuongTheoVung("Đồng bằng sông Cửu Long");
+    int slHssv = bhytDao.getSoLuongTheoLoaiTatCa("HSSV");
+    int slHcn = bhytDao.getSoLuongTheoLoaiTatCa("Hộ cận nghèo");
+    int slHtb = bhytDao.getSoLuongTheoLoaiTatCa("Hộ nông lâm ngư nghiệp thu nhập trung bình");
+    int slNld = bhytDao.getSoLuongTheoLoaiTatCa("Người lao động");
+    int slHgd = bhytDao.getSoLuongTheoLoaiTatCa("Hộ gia đình");
+    int slBhxhd = bhytDao.getSoLuongTheoLoaiTatCa("BHXH đóng");
+    int slNNd = bhytDao.getSoLuongTheoLoaiTatCa("Nhà nước đóng");
     
-//TienBHYT
-    long tienBHYT2018 = bhytDao.getTienBHYTTheoNam("2018");
-    long tienBHYT2017 = bhytDao.getTienBHYTTheoNam("2017");
-    long tienBHYT2016 = bhytDao.getTienBHYTTheoNam("2016");
-    long tienBHYT2015 = bhytDao.getTienBHYTTheoNam("2015");
+    //Bieu do theo loai BHYT
+    int sl2015 = bhytDao.getSoLuongTheoNam("2015");
+    int sl2016 = bhytDao.getSoLuongTheoNam("2016");
+    int sl2017 = bhytDao.getSoLuongTheoNam("2017");
+    int sl2018 = bhytDao.getSoLuongTheoNam("2018");
+    int slNguoi = bhytDao.getSoLuongNguoi();
+   
 %>
+
+        <!-- Area Chart Example-->
+        <div class="card mb-3">
+            <div class="card-header">
+                <i class="fas fa-chart-area"></i>
+                Biểu đồ số lượng người tham gia theo từng năm (Người)</div>
+            <div class="card-body">
+                <canvas id="myAreaChart" width="100%" height="30"></canvas>
+            </div>
+            <div class="card-footer small text-muted">Updated yesterday at 11:59 PM</div>
+        </div>
+
+         <!-- Bar Chart -->
+        <div class="card mb-3">
+            <div class="card-header">
+                <i class="fas fa-chart-bar"></i>
+                Biểu đồ số lượng người tham gia theo từng loại BHYT (Người)</div>
+            <div class="card-body">
+                <canvas id="myBarChart" width="100%" height="50"></canvas>
+            </div>
+            <div class="card-footer small text-muted">Updated yesterday at 11:59 PM</div>
+        </div>
+    </div>
+    <!-- /.container-fluid -->
+
         <!-- Sticky Footer -->
         <footer class="sticky-footer">
             <div class="container my-auto">
@@ -87,9 +110,6 @@
         <!--<script src="js/demo/chart-bar-demo.js"></script>-->
         <script type="text/javascript" >
             var ctx = document.getElementById("myPieChart");
-            var soLuongBac = <%=soLuongNguoiBac %>;
-            var soLuongNguoiNam = <%=soLuongNguoiNam %>;
-            var soLuongNguoiTrung = <%=soLuongNguoiTrung %>;
             var myPieChart = new Chart(ctx, {
                 type: 'pie',
                 data: {
@@ -103,23 +123,23 @@
         </script>
         <script type="text/javascript">
             var ctx = document.getElementById("myBarChart");
-            var soLuongDBB = <%=soLuongNguoiVungDBB %>;
-            var soLuongTBB = <%=soLuongNguoiVungTBB %>;
-            var soLuongDBSH = <%=soLuongNguoiVungDBSH %>;
-            var soLuongBTB = <%=soLuongNguoiVungBTB %>;
-            var soLuongNTB = <%=soLuongNguoiVungNTB %>;
-            var soLuongTN = <%=soLuongNguoiVungTN %>;
-            var soLuongDNB = <%=soLuongNguoiVungDNB %>;
-            var soLuongDBSCL = <%=soLuongNguoiVungDBSCL %>;
+            var slHssv = <%=slHssv %>;
+            var slBhxhd = <%=slBhxhd %>;
+            var slHcn = <%=slHcn %>;
+            var slHgd = <%=slHgd %>;
+            var slHtb = <%=slHtb %>;
+            var slNNd = <%=slNNd %>;
+            var slNld = <%=slNld %>;
+            
             var myLineChart = new Chart(ctx, {
               type: 'bar',
               data: {
-                labels: ["Tây Bắc Bộ", "Đông Bắc Bộ", "ĐB sông Hồng", "Bắc Trung Bộ", "Nam Trung Bộ", "Tây Nguyên", "Đông Nam Bộ", "ĐB sông Cửu Long"],
+                labels: ["HSSV", "Hộ cận nghèo", "Hộ nông lâm ngư nghiệp thu nhập TB", "Người lao động", "Hộ gia đình", "BHXH đóng", "Nhà nước đóng"],
                 datasets: [{
                   label: "Revenue",
                   backgroundColor: "rgba(2,117,216,1)",
                   borderColor: "rgba(2,117,216,1)",
-                  data: [soLuongTBB, soLuongDBB, soLuongDBSH, soLuongBTB, soLuongNTB, soLuongTN, soLuongDNB, soLuongDBSCL],
+                  data: [slHssv, slHcn, slHtb, slNld, slHgd, slBhxhd, slNNd],
                 }],
               },
               options: {
@@ -138,7 +158,7 @@
                   yAxes: [{
                     ticks: {
                       min: 0,
-                      max: 500,
+                      max: 400,
                       maxTicksLimit: 5
                     },
                     gridLines: {
@@ -154,10 +174,10 @@
         </script>
         <script type="text/javascript">
             var ctx = document.getElementById("myAreaChart");
-            var tien2015 = <%=tienBHYT2015 %>;
-            var tien2016 = <%=tienBHYT2016 %>;
-            var tien2017 = <%=tienBHYT2017 %>;
-            var tien2018 = <%=tienBHYT2018 %>;
+            var sl2015 = <%=sl2015 %>;
+            var sl2016 = <%=sl2016 %>;
+            var sl2017 = <%=sl2017 %>;
+            var sl2018 = <%=sl2018 %>;
             var myLineChart = new Chart(ctx, {
               type: 'line',
               data: {
@@ -174,7 +194,7 @@
                   pointHoverBackgroundColor: "rgba(2,117,216,1)",
                   pointHitRadius: 50,
                   pointBorderWidth: 2,
-                  data: [tien2015, tien2016, tien2017, tien2018],
+                  data: [sl2015, sl2016, sl2017, sl2018],
                 }],
               },
               options: {
@@ -193,7 +213,7 @@
                   yAxes: [{
                     ticks: {
                       min: 0,
-                      max: 1000000000,
+                      max: 1000,
                       maxTicksLimit: 5
                     },
                     gridLines: {

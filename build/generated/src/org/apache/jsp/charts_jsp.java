@@ -4,7 +4,7 @@ import javax.servlet.*;
 import javax.servlet.http.*;
 import javax.servlet.jsp.*;
 
-public final class index_jsp extends org.apache.jasper.runtime.HttpJspBase
+public final class charts_jsp extends org.apache.jasper.runtime.HttpJspBase
     implements org.apache.jasper.runtime.JspSourceDependent {
 
   private static final JspFactory _jspxFactory = JspFactory.getDefaultFactory();
@@ -46,10 +46,9 @@ public final class index_jsp extends org.apache.jasper.runtime.HttpJspBase
       out.write("\n");
       org.apache.jasper.runtime.JspRuntimeLibrary.include(request, response, "header.jsp", out, false);
       out.write("      \n");
-      org.apache.jasper.runtime.JspRuntimeLibrary.include(request, response, "contentIndex.jsp", out, false);
-      out.write(' ');
+      org.apache.jasper.runtime.JspRuntimeLibrary.include(request, response, "contentChart.jsp", out, false);
       out.write('\n');
-      org.apache.jasper.runtime.JspRuntimeLibrary.include(request, response, "footerIndex.jsp", out, false);
+      org.apache.jasper.runtime.JspRuntimeLibrary.include(request, response, "footerCharts.jsp", out, false);
       out.write("\n");
       out.write("      \n");
       out.write("\n");

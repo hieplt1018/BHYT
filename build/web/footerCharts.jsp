@@ -19,6 +19,12 @@
     int soLuongNguoiVungTN = bhytDao.getSoLuongTheoVung("Tây Nguyên");
     int soLuongNguoiVungDNB = bhytDao.getSoLuongTheoVung("Đông Nam Bộ");
     int soLuongNguoiVungDBSCL = bhytDao.getSoLuongTheoVung("Đồng bằng sông Cửu Long");
+    
+//TienBHYT
+    long tienBHYT2018 = bhytDao.getTienBHYTTheoNam("2018");
+    long tienBHYT2017 = bhytDao.getTienBHYTTheoNam("2017");
+    long tienBHYT2016 = bhytDao.getTienBHYTTheoNam("2016");
+    long tienBHYT2015 = bhytDao.getTienBHYTTheoNam("2015");
 %>
         <!-- Sticky Footer -->
         <footer class="sticky-footer">
@@ -145,6 +151,62 @@
                 }
               }
             });
+        </script>
+        <script type="text/javascript">
+            var ctx = document.getElementById("myAreaChart");
+            var tien2015 = <%=tienBHYT2015 %>;
+            var tien2016 = <%=tienBHYT2016 %>;
+            var tien2017 = <%=tienBHYT2017 %>;
+            var tien2018 = <%=tienBHYT2018 %>;
+            var myLineChart = new Chart(ctx, {
+              type: 'line',
+              data: {
+                labels: ["2018", "2017", "2016", "2015"],
+                datasets: [{
+                  label: "Sessions",
+                  lineTension: 0.3,
+                  backgroundColor: "rgba(2,117,216,0.2)",
+                  borderColor: "rgba(2,117,216,1)",
+                  pointRadius: 5,
+                  pointBackgroundColor: "rgba(2,117,216,1)",
+                  pointBorderColor: "rgba(255,255,255,0.8)",
+                  pointHoverRadius: 5,
+                  pointHoverBackgroundColor: "rgba(2,117,216,1)",
+                  pointHitRadius: 50,
+                  pointBorderWidth: 2,
+                  data: [tien2015, tien2016, tien2017, tien2018],
+                }],
+              },
+              options: {
+                scales: {
+                  xAxes: [{
+                    time: {
+                      unit: 'date'
+                    },
+                    gridLines: {
+                      display: false
+                    },
+                    ticks: {
+                      maxTicksLimit: 7
+                    }
+                  }],
+                  yAxes: [{
+                    ticks: {
+                      min: 0,
+                      max: 1000000000,
+                      maxTicksLimit: 5
+                    },
+                    gridLines: {
+                      color: "rgba(0, 0, 0, .125)",
+                    }
+                  }],
+                },
+                legend: {
+                  display: false
+                }
+              }
+            });
+    
         </script>
     </body>
 

@@ -5,10 +5,6 @@
  */
 package servlet;
 
-import com.google.gson.Gson;
-import controller.AdminDaoImpl;
-import controller.BhytDAOImpl;
-import helper.MD5;
 import java.io.IOException;
 import java.io.PrintWriter;
 import javax.servlet.RequestDispatcher;
@@ -17,13 +13,12 @@ import javax.servlet.http.HttpServlet;
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
 import javax.servlet.http.HttpSession;
-import model.Admin;
 
 /**
  *
  * @author asus
  */
-public class LoginServlet extends HttpServlet {
+public class ConfigServlet extends HttpServlet {
 
     @Override
     protected void doGet(HttpServletRequest request, HttpServletResponse response)
@@ -31,31 +26,39 @@ public class LoginServlet extends HttpServlet {
         request.setCharacterEncoding("UTF-8");
 //        response.setContentType("text/html; charset=UTF-8");
         response.setContentType("application/json");
-        String username = request.getParameter("username");
-        String password = request.getParameter("password");
+        String luongCoSo = request.getParameter("LuongCS");
+        String phanTramLuong = request.getParameter("PhanTramLuongCS");
+        String phanTramHoTroHSSV = request.getParameter("HSSV");;
+        String phanTramHoTroNongLamNgu = request.getParameter("HoNLNN");
+        String phanTramHoTroCanNgheo = request.getParameter("HCN");
+        String phanTramHoGDMotNguoiPhuThuoc = request.getParameter("NT1");
+        String phanTramHoGDHaiNguoiPhuThuoc = request.getParameter("NT2");
+        String phanTramHoGDBaNguoiPhuThuoc = request.getParameter("NT3"); 
+        String phanTramHoGDBonNguoiPhuThuoc = request.getParameter("NT4");
+        String phanTramHoGDNamVaLonHonNguoiPhuThuoc = request.getParameter("NT5");
         String url = "";
+
         HttpSession session = request.getSession();
         try {
-            AdminDaoImpl adminDAO = new AdminDaoImpl();
-            BhytDAOImpl bhytDao = new BhytDAOImpl();
-            System.out.println(password);
-            Admin account = adminDAO.login(username, MD5.encryption(password));
-            if (account != null) {
+            System.out.println();
+            if (luongCoSo != null) {
                 // Chuyen trang
-                url = "index.jsp";
-                session.setAttribute("account", account);
+                url = "config.jsp";
+                String successMessage = "Thay đổi thành công!";
+                
+                request.setAttribute("successMessage", successMessage);
                 RequestDispatcher dispatcher = request.getRequestDispatcher(url);
                 dispatcher.forward(request, response);
             } else {
-                url = "login.jsp";
-                String errorMessage = "Wrong username or password!";
+                url = "config.jsp";
+                String errorMessage = "Thay đổi thất bại!";
 
                 request.setAttribute("errorMessage", errorMessage);
                 RequestDispatcher dispatcher = request.getRequestDispatcher(url);
                 dispatcher.forward(request, response);
             }
         } catch (Exception ex) {
-            System.out.println("LoginServlet Failed!");
+            System.out.println("ConfigServlet Failed!");
         }
     }
 
@@ -64,5 +67,6 @@ public class LoginServlet extends HttpServlet {
             throws ServletException, IOException {
         doGet(request, response);
     }
+
 
 }

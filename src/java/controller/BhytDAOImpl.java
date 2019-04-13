@@ -111,7 +111,7 @@ public boolean insert(BHYT bhyt) {
     public void genData(){
         FakeData fakeData = new FakeData();
         int sl = 10;
-        for (int i=0;i<300;i++){
+        for (int i=0;i<800;i++){
             String maThe = new String();
             String loaiBHYT = fakeData.getLoaiBHYT();
             maThe += fakeData.getLoaiBHYTVietTat(loaiBHYT)+ ((1+new Random().nextInt(5))+"")
@@ -132,7 +132,6 @@ public boolean insert(BHYT bhyt) {
             int tienBHYT = new BhytDAOImpl().tinhBHYT(loaiBHYT, fakeData.getLuong(), soNguoi);
             BHYT bhyt = new BHYT(maThe,hoTen , loaiBHYT, tienBHYT, ngaySinh, vung, mien, thanhPho, quanHuyen, xaPhuong, thonXom, soNguoi, ngayDong);
             insert(bhyt);
-            System.out.println(hoTen);
         }
         System.out.println("Gen data success!");
     }
@@ -180,7 +179,7 @@ public boolean insert(BHYT bhyt) {
     @Override
     public ArrayList<BHYT> get(int soluong) {
         ArrayList<BHYT> list = new ArrayList<>();
-        String sql = "select * from bhyt limit " + soluong;
+        String sql = "select * from bhyt ORDER BY RAND() limit " + soluong;
         try {
             rs = connectdb.getStatement().executeQuery(sql);
             while(rs.next() && soluong-- > 0){
@@ -211,7 +210,7 @@ public boolean insert(BHYT bhyt) {
     public static void main(String[] args) {
         BhytDAOImpl dao = new BhytDAOImpl();
 //        System.out.println("");
-        dao.genData();
+//        dao.genData();
 //        ArrayList<BHYT> list = dao.get(1);
 //        System.out.println(list);
 //        System.out.println(dao.getSoLuongTheoMien("Trung"));
@@ -219,6 +218,7 @@ public boolean insert(BHYT bhyt) {
 //        System.out.println(dao.getSoLuongTheoMien("Bắc"));
 //        System.out.println(dao.getSoLuongTheoVung("Đông Bắc Bộ"));
 //        System.out.println(dao.getSoLuongTheoVung("Tây Bắc Bộ"));
+        System.out.println(dao.getTienBHYTTheoNam("2018"));
         
     }
 
@@ -234,7 +234,7 @@ public boolean insert(BHYT bhyt) {
         } catch (SQLException ex) {
             System.out.println("Catch getSoLuongNguoi function failed!");
         } finally{
-            connectdb.closeConnect();
+//            connectdb.closeConnect();
         }
         return 0;
     }
@@ -271,6 +271,122 @@ public boolean insert(BHYT bhyt) {
 //            connectdb.closeConnect();
         }
         return 0;
+    }
+
+    @Override
+    public int getSoLuongTheoLoai(String loai, String year) {
+        String sql = "select count(*) from bhyt where LoaiBHYT like '%" + loai+ "%' and year(NgayDong) = " + year;
+        try {
+            rs = connectdb.getStatement().executeQuery(sql);
+            while(rs.next()){
+                int soluong = rs.getInt("count(*)");
+                return soluong;
+            }
+        } catch (SQLException ex) {
+            System.out.println("Catch getSoLuongNguoiTheoLoai function failed!");
+        } finally{
+//            connectdb.closeConnect();
+        }
+        return 0;
+    }
+
+    @Override
+    public int getSoLuongTheoNam(String year) {
+        String sql = "select count(*) from bhyt where year(NgayDong) = " + year;
+        try {
+            rs = connectdb.getStatement().executeQuery(sql);
+            while(rs.next()){
+                int soluong = rs.getInt("count(*)");
+                return soluong;
+            }
+        } catch (SQLException ex) {
+            System.out.println("Catch getSoLuongNguoiTheoNam() failed!");
+        } finally{
+//            connectdb.closeConnect();
+        }
+        return 0;
+    }
+
+    @Override
+    public int getSoLuongTheoLoaiTatCa(String loai) {
+        String sql = "select count(*) from bhyt where LoaiBHYT like '%" + loai+ "%'";
+        try {
+            rs = connectdb.getStatement().executeQuery(sql);
+            while(rs.next()){
+                int soluong = rs.getInt("count(*)");
+                return soluong;
+            }
+        } catch (SQLException ex) {
+            System.out.println("Catch getSoLuongNguoiTheoLoaiTatCa() failed!");
+        } finally{
+//            connectdb.closeConnect();
+        }
+        return 0;
+    }
+
+    @Override
+    public long getTongTienBHYT() {
+        String sql = "select sum(TienBHYT) from bhyt";
+        try {
+            rs = connectdb.getStatement().executeQuery(sql);
+            while(rs.next()){
+                long soluong = rs.getInt("sum(TienBHYT)");
+                return soluong;
+            }
+        } catch (SQLException ex) {
+            System.out.println("Catch getTongTienBHYT() failed!");
+        } finally{
+//            connectdb.closeConnect();
+        }
+        return 0;
+    }
+
+    @Override
+    public long getTienBHYTTheoNam(String year) {
+        String sql = "select sum(TienBHYT) from bhyt where year(NgayDong) = " + year;
+        try {
+            rs = connectdb.getStatement().executeQuery(sql);
+            while(rs.next()){
+                long soluong = rs.getInt("sum(TienBHYT)");
+                return soluong;
+            }
+        } catch (SQLException ex) {
+            System.out.println("Catch getTienBHYTTheoNam() failed!");
+        } finally{
+//            connectdb.closeConnect();
+        }
+        return 0;
+    }
+
+    @Override
+    public ArrayList<BHYT> getTheoNam(String year, int soLuong) {
+        ArrayList<BHYT> list = new ArrayList<>();
+        String sql = "select * from bhyt where year(NgayDong) = " + year +" limit " + soLuong;
+        try {
+            rs = connectdb.getStatement().executeQuery(sql);
+            while(rs.next() && soLuong-- > 0){
+                BHYT bhyt = new BHYT();
+                bhyt.setHoTen(rs.getString("HoTen"));
+                bhyt.setMaTheBHYT(rs.getString("MaTheBHYT"));
+                bhyt.setMien(rs.getString("Mien"));
+                bhyt.setLoaiBHYT(rs.getString("LoaiBHYT"));
+                bhyt.setNgayDongBHYT(rs.getDate("NgayDong"));
+                bhyt.setNgaySinh(rs.getDate("NgaySinh"));
+                bhyt.setQuanHuyen(rs.getString("Quan"));
+                bhyt.setSoNguoiTrongHo(rs.getInt("NguoiTrongHoGD"));
+                bhyt.setThanhPho(rs.getString("ThanhPho"));
+                bhyt.setThonXom(rs.getString("Thon"));
+                bhyt.setTienBHYT(rs.getInt("TienBHYT"));
+                bhyt.setVung(rs.getString("Vung"));
+                bhyt.setXaPhuong(rs.getString("Phuong"));
+                list.add(bhyt);
+            } 
+        } catch (SQLException ex) {
+            System.out.println("Catch getListBHYT function");
+        } finally{
+            connectdb.closeConnect();
+        }
+        return list;
     }
 }
 

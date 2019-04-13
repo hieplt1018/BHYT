@@ -4,7 +4,7 @@ import javax.servlet.*;
 import javax.servlet.http.*;
 import javax.servlet.jsp.*;
 
-public final class index_jsp extends org.apache.jasper.runtime.HttpJspBase
+public final class config_jsp extends org.apache.jasper.runtime.HttpJspBase
     implements org.apache.jasper.runtime.JspSourceDependent {
 
   private static final JspFactory _jspxFactory = JspFactory.getDefaultFactory();
@@ -46,13 +46,11 @@ public final class index_jsp extends org.apache.jasper.runtime.HttpJspBase
       out.write("\n");
       org.apache.jasper.runtime.JspRuntimeLibrary.include(request, response, "header.jsp", out, false);
       out.write("      \n");
-      org.apache.jasper.runtime.JspRuntimeLibrary.include(request, response, "contentIndex.jsp", out, false);
+      org.apache.jasper.runtime.JspRuntimeLibrary.include(request, response, "contentConfig.jsp", out, false);
       out.write(' ');
       out.write('\n');
-      org.apache.jasper.runtime.JspRuntimeLibrary.include(request, response, "footerIndex.jsp", out, false);
-      out.write("\n");
-      out.write("      \n");
-      out.write("\n");
+      org.apache.jasper.runtime.JspRuntimeLibrary.include(request, response, "footerConfig.jsp", out, false);
+      out.write('\n');
     } catch (Throwable t) {
       if (!(t instanceof SkipPageException)){
         out = _jspx_out;

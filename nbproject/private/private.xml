@@ -3,8 +3,13 @@
     <editor-bookmarks xmlns="http://www.netbeans.org/ns/editor-bookmarks/2" lastBookmarkId="0"/>
     <open-files xmlns="http://www.netbeans.org/ns/projectui-open-files/2">
         <group>
+            <file>file:/home/asus/BHYT/web/contentConfig.jsp</file>
             <file>file:/home/asus/BHYT/web/footerCharts.jsp</file>
-            <file>file:/home/asus/BHYT/src/java/controller/BhytDAOImpl.java</file>
+            <file>file:/home/asus/BHYT/src/java/helper/Config.java</file>
+            <file>file:/home/asus/BHYT/web/login.jsp</file>
+            <file>file:/home/asus/BHYT/src/java/servlet/LoginServlet.java</file>
+            <file>file:/home/asus/BHYT/web/contentIndex.jsp</file>
+            <file>file:/home/asus/BHYT/src/java/servlet/ConfigServlet.java</file>
         </group>
     </open-files>
 </project-private>
