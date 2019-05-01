@@ -192,10 +192,10 @@ public class Config {
         }
     }
 
-    public static void main(String[] args) {
-        Config config = new Config();
-//        config.ghiFile(1390000, 4.5, 30, 50, 70, 4.5, 70, 60, 50, 40);
-//        config.ghiFile(10, 1, 2, 3, 2, 2, 10, 2, 3, 2);
-        config.docFile();
-    }
+//    public static void main(String[] args) {
+//        Config config = new Config();
+////        config.ghiFile(1390000, 4.5, 30, 50, 70, 4.5, 70, 60, 50, 40);
+////        config.ghiFile(10, 1, 2, 3, 2, 2, 10, 2, 3, 2);
+//        config.docFile();
+//    }
 }
