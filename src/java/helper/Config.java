@@ -5,12 +5,17 @@
  */
 package helper;
 
+import java.io.BufferedWriter;
 import java.io.DataInputStream;
 import java.io.DataOutputStream;
+import java.io.File;
 import java.io.FileInputStream;
 import java.io.FileNotFoundException;
 import java.io.FileOutputStream;
+import java.io.FileWriter;
 import java.io.IOException;
+import java.util.Formatter;
+import java.util.Scanner;
 import java.util.logging.Level;
 import java.util.logging.Logger;
 
@@ -135,29 +140,14 @@ public class Config {
 
     public void docFile() {
         try {
-            FileInputStream fis = new FileInputStream("config.txt");
-            DataInputStream dis = new DataInputStream(fis);
-            this.luongCoSo = dis.readInt();
-            this.phanTramLuong = dis.readDouble();
-            this.phanTramHoTroHSSV = dis.readDouble();
-            this.phanTramHoTroNongLamNgu = dis.readDouble();
-            this.phanTramHoTroCanNgheo = dis.readDouble();
-            this.phanTramHoGDMotNguoiPhuThuoc = dis.readDouble();
-            this.phanTramHoGDHaiNguoiPhuThuoc = dis.readDouble();
-            this.phanTramHoGDBaNguoiPhuThuoc = dis.readDouble();
-            this.phanTramHoGDBonNguoiPhuThuoc = dis.readDouble();
-            this.phanTramHoGDNamVaLonHonNguoiPhuThuoc = dis.readDouble();
-            System.out.println("Ket qua doc file cau hinh:");
-            System.out.println(luongCoSo);
-            System.out.println(phanTramLuong);
-            System.out.println(phanTramHoTroHSSV);
-            System.out.println(phanTramHoTroNongLamNgu);
-            System.out.println(phanTramHoTroCanNgheo);
-            System.out.println(phanTramHoGDMotNguoiPhuThuoc);
-            System.out.println(phanTramHoGDHaiNguoiPhuThuoc);
-            System.out.println(phanTramHoGDBaNguoiPhuThuoc);
-            System.out.println(phanTramHoGDBonNguoiPhuThuoc);
-            System.out.println(phanTramHoGDNamVaLonHonNguoiPhuThuoc);
+            File f = new File("/home/asus/Documents/NetBeans Project/BHYT/config.txt");
+            Scanner sc = new Scanner(f);
+            String content = "";
+            while(sc.hasNextLine()) {
+                content += sc.nextLine() +"\n";
+            }
+            System.out.println(content);
+            sc.close();
         } catch (FileNotFoundException ex) {
             Logger.getLogger(Config.class.getName()).log(Level.SEVERE, null, ex);
         } catch (IOException ex) {
@@ -170,20 +160,12 @@ public class Config {
             double phanTramHoTroCanNgheo, double phanTramHoGDMotNguoiPhuThuoc, double phanTramHoGDHaiNguoiPhuThuoc,
             double phanTramHoGDBaNguoiPhuThuoc, double phanTramHoGDBonNguoiPhuThuoc, double phanTramHoGDNamVaLonHonNguoiPhuThuoc) {
         try {
-            FileOutputStream fos = new FileOutputStream("config.txt");
-            DataOutputStream dos = new DataOutputStream(fos);
-            dos.writeInt(luongCoSo);
-            dos.writeDouble(phanTramLuong);
-            dos.writeDouble(phanTramHoTroHSSV);
-            dos.writeDouble(phanTramHoTroNongLamNgu);
-            dos.writeDouble(phanTramHoTroCanNgheo);
-            dos.writeDouble(phanTramHoGDMotNguoiPhuThuoc);
-            dos.writeDouble(phanTramHoGDHaiNguoiPhuThuoc);
-            dos.writeDouble(phanTramHoGDBaNguoiPhuThuoc);
-            dos.writeDouble(phanTramHoGDBonNguoiPhuThuoc);
-            dos.writeDouble(phanTramHoGDNamVaLonHonNguoiPhuThuoc);
-            fos.close();
-            dos.close();
+            Formatter f = new Formatter("/home/asus/Documents/NetBeans Project/BHYT/config.txt");
+            f.format("%s %s %s %s %s %s %s %s %s %s", luongCoSo, phanTramLuong, phanTramHoTroHSSV
+            , phanTramHoTroNongLamNgu, phanTramHoTroCanNgheo, phanTramHoGDMotNguoiPhuThuoc
+            , phanTramHoGDHaiNguoiPhuThuoc, phanTramHoGDBaNguoiPhuThuoc, 
+            phanTramHoGDBonNguoiPhuThuoc, phanTramHoGDNamVaLonHonNguoiPhuThuoc);
+            f.close();
             System.out.println("Ghi file cau hinh xong!");
         } catch (FileNotFoundException ex) {
             Logger.getLogger(Config.class.getName()).log(Level.SEVERE, null, ex);
@@ -192,10 +174,10 @@ public class Config {
         }
     }
 
-//    public static void main(String[] args) {
-//        Config config = new Config();
-////        config.ghiFile(1390000, 4.5, 30, 50, 70, 4.5, 70, 60, 50, 40);
-////        config.ghiFile(10, 1, 2, 3, 2, 2, 10, 2, 3, 2);
-//        config.docFile();
-//    }
+    public static void main(String[] args) {
+        Config config = new Config();
+        config.ghiFile(1390000, 4.5, 30, 50, 70, 4.5, 70, 60, 50, 40);
+//        config.ghiFile(10, 1, 2, 3, 2, 2, 10, 2, 3, 2);
+        config.docFile();
+    }
 }

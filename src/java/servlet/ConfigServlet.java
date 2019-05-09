@@ -25,8 +25,8 @@ public class ConfigServlet extends HttpServlet {
     protected void doGet(HttpServletRequest request, HttpServletResponse response)
             throws ServletException, IOException {
         request.setCharacterEncoding("UTF-8");
-//        response.setContentType("text/html; charset=UTF-8");
-        response.setContentType("application/json");
+        response.setContentType("text/html; charset=UTF-8");
+//        response.setContentType("application/json");
         String luongCoSoStr = request.getParameter("LuongCS");
         String phanTramLuongStr = request.getParameter("PhanTramLuongCS");
         String phanTramHoTroHSSVStr = request.getParameter("HSSV");;
@@ -56,7 +56,7 @@ public class ConfigServlet extends HttpServlet {
                 double phanTramHoGDBaNguoiPhuThuoc = Double.parseDouble(phanTramHoGDBaNguoiPhuThuocStr);
                 double phanTramHoGDBonNguoiPhuThuoc = Double.parseDouble(phanTramHoGDBonNguoiPhuThuocStr);
                 double phanTramHoGDNamVaLonHonNguoiPhuThuoc = Double.parseDouble(phanTramHoGDNamVaLonHonNguoiPhuThuocStr);
-                
+                System.out.println(luongCoSo);
                 Config config = new Config();
                 config.ghiFile(luongCoSo, phanTramLuong, phanTramHoTroHSSV, 
                         phanTramHoTroNongLamNgu, phanTramHoTroCanNgheo, 

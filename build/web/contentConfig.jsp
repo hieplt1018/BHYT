@@ -4,10 +4,12 @@
     Author     : asus
 --%>
 
+<%@page import="helper.Config"%>
 <%@page contentType="text/html" pageEncoding="UTF-8"%>
 <% 
     Object error = request.getAttribute("errorMessage");
     Object success = request.getAttribute("successMessage");
+
 %>
 <div id="wrapper">
 
@@ -48,7 +50,17 @@
                 </li>
                 <li class="breadcrumb-item active">Config</li>
             </ol>
-
+            <%                    if (error != null) {%>
+            <div class="mt-3 mb-3" style ="color:tomato;">
+                <%=error%>
+            </div>  
+            <%} else if (success != null) {%>
+            <div class="mt-3 mb-3" style ="color:green;">
+                <%=success%>
+            </div>
+            <%
+                }
+            %>
             <!-- Form -->
             <div class="card">
                 <div class="card-header">Thiết lập giá trị</div>
@@ -116,19 +128,7 @@
                             </div>
                             <div class="card-footer"></div>
                         </div>  
-                        <%
-                            if (error != null) {%>
-                                <div class="mt-3" style ="color:tomato;">
-                                    <%=error%>
-                                </div>  
-                            <%} else if (success != null) { %>
-                                <div class="mt-3" style ="color:green;">
-                                    <%=success%>
-                                </div>
-                        <%
-                            } 
-                        %>
-                        <a class="btn btn-primary mt-3" href="#" data-toggle="modal" data-target="#configModal">Submit form</a>
+                        <button type="submit" class="btn btn-primary mt-3">Config</button>    
                     </form>
                 </div>
             </div>

@@ -37,7 +37,7 @@
                         <form action="${pageContext.request.contextPath}/LoginServlet"  method="post">
                             <div class="form-group">
                                 <label for="exampleInputEmail1">Username</label>
-                                <input name="username" type="text" class="form-control" id="exampleInputEmail" aria-describedby="emailHelp" placeholder="Email" required autofocus>
+                                <input name="username" type="text" class="form-control" id="exampleInputEmail" aria-describedby="emailHelp" placeholder="Username" required autofocus>
                                 <small id="emailHelp" class="form-text text-muted">We'll never share your account with anyone else.</small>
                             </div>
                             <div class="form-group">
