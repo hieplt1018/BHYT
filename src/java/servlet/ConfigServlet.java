@@ -57,6 +57,9 @@ public class ConfigServlet extends HttpServlet {
                 double phanTramHoGDBonNguoiPhuThuoc = Double.parseDouble(phanTramHoGDBonNguoiPhuThuocStr);
                 double phanTramHoGDNamVaLonHonNguoiPhuThuoc = Double.parseDouble(phanTramHoGDNamVaLonHonNguoiPhuThuocStr);
                 System.out.println(luongCoSo);
+                System.out.println("HSSV: " + phanTramHoTroHSSVStr);
+                System.out.println("Luong CS: " + phanTramLuongStr);
+                System.out.println("Nguoi thu 2: " + phanTramHoGDHaiNguoiPhuThuocStr);
                 Config config = new Config();
                 config.ghiFile(luongCoSo, phanTramLuong, phanTramHoTroHSSV, 
                         phanTramHoTroNongLamNgu, phanTramHoTroCanNgheo, 

@@ -9,7 +9,9 @@
 <% 
     Object error = request.getAttribute("errorMessage");
     Object success = request.getAttribute("successMessage");
-
+    Config config1 = new Config();
+    String content = config1.docFile();
+    String[] bhytContent = content.split(" ");
 %>
 <div id="wrapper">
 
@@ -70,11 +72,11 @@
                         <div class="form-row">
                             <div class="col-md-4 mb-3">
                                 <label for="LuongCS">Lương cơ sở</label>
-                                <input name="LuongCS" type="number" class="form-control " id="validationServer01" placeholder="" value="" required>
+                                <input name="LuongCS" type="number" class="form-control " id="validationServer01" placeholder="" value="<%=bhytContent[0] %>" required>
                             </div>
                             <div class="col-md-4 mb-3">
-                                <label for="PhanTramLuongCS">Phần trăm lương cơ sở</label>
-                                <input name="PhanTramLuongCS" type="number" min=1 max=100 step=0.1 class="form-control " id="validationServer02" placeholder="" value="" required>
+                                <label for="PhanTramLuongCS">Phần trăm lương</label>
+                                <input name="PhanTramLuongCS" type="number" min=0 max=100 step=0.1 class="form-control " id="validationServer02" placeholder="" value="<%=bhytContent[1] %>" required>
                             </div>
                         </div>
                         <!-- Hỗ trợ-->
@@ -83,18 +85,18 @@
                         <div class="form-row">
                             <div class="col-md-4 mb-3">
                                 <label for="HSSV">HSSV</label>
-                                <input name="HSSV" type="number" min=1 max=100 step=0.1 class="form-control " id="validationServer03" placeholder="" required>
+                                <input name="HSSV" type="number" min=0 max=100 step=0.1 class="form-control " id="validationServer03" placeholder="" value="<%=bhytContent[2] %>" required>
                             </div>
                             <div class="col-md-4 mb-3">
                                 <label for="HoNLNN">Hộ NLND nghiệp có thu nhập TB</label>
-                                <input name="HoNLNN" type="number" min=1 max=100 step=0.1 class="form-control " id="validationServer04" placeholder="" required>
+                                <input name="HoNLNN" type="number" min=0 max=100 step=0.1 class="form-control " id="validationServer04" placeholder="" value="<%=bhytContent[3] %>" required>
                                 <div class="invalid-feedback">
                                     *NNND: nông, lâm, ngư, diêm.
                                 </div>
                             </div>
                             <div class="col-md-4 mb-3">
                                 <label for="HCN">Hộ cận nghèo</label>
-                                <input name="HCN" type="number" min=1 max=100 step=0.1 class="form-control " id="validationServer05" placeholder="" required>
+                                <input name="HCN" type="number" min=0 max=100 step=0.1 class="form-control " id="validationServer05"  value="<%=bhytContent[4] %>" placeholder="" required>
                             </div>
                         </div>
                         <!-- Hộ gia đình-->
@@ -104,25 +106,25 @@
                                 <div class="form-row">
                                     <div class="col-md-4 mb-3">
                                         <label for="NT1">Người thứ nhất</label>
-                                        <input name="NT1" type="number" min=1 max=100 step=0.1 class="form-control " id="validationServer06" placeholder="" required>
+                                        <input name="NT1" type="number" min=0 max=100 step=0.1 class="form-control " id="validationServer06" value="<%=bhytContent[5] %>" placeholder="" required>
                                     </div>
                                     <div class="col-md-4 mb-3">
                                         <label for="NT2">Người thứ hai</label>
-                                        <input name="NT2" type="number" min=1 max=100 step=0.1 class="form-control " id="validationServer07" placeholder="" required>
+                                        <input name="NT2" type="number" min=0 max=100 step=0.1 class="form-control " id="validationServer07" placeholder="" value="<%=bhytContent[6] %>" required>
                                     </div>
                                     <div class="col-md-4 mb-3">
                                         <label for="NT3">Người thứ ba</label>
-                                        <input name="NT3" type="number" min=1 max=100 step=0.1 class="form-control " id="validationServer08" placeholder="" required>
+                                        <input name="NT3" type="number" min=0 max=100 step=0.1 class="form-control " id="validationServer08" placeholder="" value="<%=bhytContent[7] %>" required>
                                     </div>
                                 </div>
                                 <div class="form-row">
                                     <div class="col-md-4 mb-3">
                                         <label for="NT4">Người thứ tư</label>
-                                        <input name="NT4" type="number" min=1 max=100 step=0.1 class="form-control" id="validationServer09" placeholder="" required>
+                                        <input name="NT4" type="number" min=0 max=100 step=0.1 class="form-control" id="validationServer09" placeholder="" value="<%=bhytContent[8] %>" required>
                                     </div>
                                     <div class="col-md-4 mb-3">
                                         <label for="NT5">Người thứ năm trở lên</label>
-                                        <input name="NT5" type="number" min=1 max=100 step=0.1 class="form-control " id="validationServer10" placeholder="" required>
+                                        <input name="NT5" type="number" min=0 max=100 step=0.1 class="form-control" id="validationServer10" value=<%=bhytContent[9] %> required>
                                     </div>
                                 </div>
                             </div>
@@ -132,4 +134,6 @@
                     </form>
                 </div>
             </div>
-            
+        </div>  
+    </div>
+</div>
