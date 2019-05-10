@@ -72,7 +72,7 @@
                         <div class="form-row">
                             <div class="col-md-4 mb-3">
                                 <label for="LuongCS">Lương cơ sở</label>
-                                <input name="LuongCS" type="number" class="form-control " id="validationServer01" placeholder="" value="<%=bhytContent[0] %>" required>
+                                <input name="LuongCS" type="number" min=1 step=1 class="form-control " id="validationServer01" placeholder="" value="<%=bhytContent[0] %>" required>
                             </div>
                             <div class="col-md-4 mb-3">
                                 <label for="PhanTramLuongCS">Phần trăm lương</label>
